@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<canvas id="canvas" width=6000 height=4000 style="width:3000px;height:2000px;"></canvas>
+
+		<script type="text/javascript">
+
+			const START_X = 10;
+			const START_Y = 10;
+			const INTERVAL_X = 10;
+			const INTERVAL_Y = INTERVAL_X / 2 * Math.sqrt(3);
+			const END_X = START_X + INTERVAL_X * 3;
+
+			var element = document.getElementById('canvas');
+			var context = element.getContext( "2d" ) ;
+			context.scale(10,10); // 倍率：線を細くして倍率を上げるほうがきれいに見えるので、とりあえず10倍にしておく
+
+			// パスをリセット
+			context.beginPath () ;
+
+			// 線の色
+			context.strokeStyle = "black" ;
+
+			// 線の太さ
+			context.lineWidth = 0.1 ; // 太いときたなく見えたので、とりあえず0.1とする
+
+			// 正六角形を作成　※描画しないことにしたので一旦コメント
+			// context.moveTo(START_X + INTERVAL_X * 3 / 2, START_Y);
+			// context.lineTo(END_X, START_Y + INTERVAL_Y);
+			// context.lineTo(END_X, START_Y + INTERVAL_Y * 3);
+			// context.lineTo(START_X + INTERVAL_X * 3 / 2, START_Y + INTERVAL_Y * 4);
+			// context.lineTo(START_X, START_Y + INTERVAL_Y * 3);
+			// context.lineTo(START_X, START_Y + INTERVAL_Y);
+			// context.lineTo(START_X + INTERVAL_X * 3 / 2, START_Y);
+
+			// 中身を作成(その１)
+			context.moveTo(START_X + INTERVAL_X * 3 / 2, START_Y);
+			context.lineTo(START_X + INTERVAL_X * 3 / 2, START_Y + INTERVAL_Y * 4);
+			context.lineTo(INTERVAL_Y * 2 / Math.sqrt(3) * 2, START_Y + INTERVAL_Y * 3);
+			context.lineTo(START_X, START_Y + INTERVAL_Y * 3);
+			context.lineTo(START_X + INTERVAL_X * 3 / 2, START_Y + INTERVAL_Y * 2);
+			context.lineTo(INTERVAL_Y * 2 / Math.sqrt(3) * 2, START_Y + INTERVAL_Y * 3);
+
+			// 中身を作成(その２)
+			context.moveTo(START_X + INTERVAL_X * 3 / 2, START_Y + INTERVAL_Y * 2);
+			context.lineTo(START_X + (INTERVAL_Y / Math.sqrt(3)), START_Y + INTERVAL_Y * 2);
+			context.lineTo(START_X, START_Y + INTERVAL_Y * 3);
+			context.moveTo(START_X + (INTERVAL_Y / Math.sqrt(3)), START_Y + INTERVAL_Y * 2);
+			context.lineTo(START_X, START_Y + INTERVAL_Y);
+			context.lineTo(START_X + INTERVAL_X * 3 / 2, START_Y + INTERVAL_Y * 2);
+			
+			// 中身を作成(その３)
+			context.lineTo(INTERVAL_Y * 2 / Math.sqrt(3) * 2, START_Y + INTERVAL_Y);
+			context.lineTo(START_X, START_Y + INTERVAL_Y);
+			context.moveTo(INTERVAL_Y * 2 / Math.sqrt(3) * 2, START_Y + INTERVAL_Y);
+			context.lineTo(START_X + INTERVAL_X * 3 / 2, START_Y);
+
+			// 中身を作成(その４)
+			context.lineTo((START_X + INTERVAL_X * 3 / 2) + INTERVAL_Y / Math.sqrt(3), START_Y + INTERVAL_Y);
+			context.lineTo(END_X, START_Y + INTERVAL_Y);
+			context.lineTo(START_X + INTERVAL_X * 3 / 2, START_Y + INTERVAL_Y * 2);
+			context.lineTo((START_X + INTERVAL_X * 3 / 2) + INTERVAL_Y / Math.sqrt(3), START_Y + INTERVAL_Y);
+
+			// 中身を作成(その５)
+			context.moveTo(START_X + INTERVAL_X * 3 / 2, START_Y + INTERVAL_Y * 2);
+			context.lineTo((START_X + INTERVAL_X * 3 / 2) + INTERVAL_Y / Math.sqrt(3) * 2, START_Y + INTERVAL_Y * 2);
+			context.lineTo(END_X, START_Y + INTERVAL_Y);
+			context.moveTo((START_X + INTERVAL_X * 3 / 2) + INTERVAL_Y / Math.sqrt(3) * 2, START_Y + INTERVAL_Y * 2);
+			context.lineTo(END_X, START_Y + INTERVAL_Y * 3);
+			context.lineTo(START_X + INTERVAL_X * 3 / 2, START_Y + INTERVAL_Y * 2);
+
+			// 中身を作成(その６)
+			context.lineTo((START_X + INTERVAL_X * 3 / 2) + INTERVAL_Y / Math.sqrt(3), START_Y + INTERVAL_Y * 3);
+			context.lineTo(END_X, START_Y + INTERVAL_Y * 3);
+			context.moveTo((START_X + INTERVAL_X * 3 / 2) + INTERVAL_Y / Math.sqrt(3), START_Y + INTERVAL_Y * 3);
+			context.lineTo(START_X + INTERVAL_X * 3 / 2, START_Y + INTERVAL_Y * 4);
+			
+			// 線を描画する
+			context.stroke() ;
+
+		</script>
+	</body>
+</html>
